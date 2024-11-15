@@ -1,6 +1,5 @@
 package com.chvs.habrdemo.queries.articles.responses;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 import java.time.LocalDateTime;
