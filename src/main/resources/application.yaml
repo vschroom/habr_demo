@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: habr-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5436/habr_db
+    username: habr_admin
+    password: qwerty123
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
+    enabled: true
+    contexts: default
+
+mybatis:
+  config-location: classpath:mybatis/config.xml
+  mapper-locations: classpath:mybatis/mappers/*.xml

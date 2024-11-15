@@ -1,0 +1,12 @@
+GET localhost:8080/articles/2
+
+
+###
+
+POST localhost:8080/articles
+Content-Type: application/json
+
+{
+  "header": "Новая статья",
+  "body": "текст статьи"
+}
