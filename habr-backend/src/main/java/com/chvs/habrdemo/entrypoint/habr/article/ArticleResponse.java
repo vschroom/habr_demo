@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class ArticleResponse {
+class ArticleResponse {
 
     private Long id;
     private LocalDateTime createdAt;

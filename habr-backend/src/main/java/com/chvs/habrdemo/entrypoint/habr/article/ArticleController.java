@@ -1,6 +1,5 @@
 package com.chvs.habrdemo.entrypoint.habr.article;
 
-import com.chvs.habrdemo.core.habr.article.ArticleRequest;
 import com.chvs.habrdemo.core.habr.article.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("articles")
 @RequiredArgsConstructor
-public class ArticleController {
+class ArticleController {
 
     private final ArticleService articleService;
     private final ArticleResponseMapper articleResponseMapper;
