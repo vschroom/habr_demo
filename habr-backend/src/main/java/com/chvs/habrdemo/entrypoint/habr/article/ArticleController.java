@@ -1,9 +1,7 @@
-package com.chvs.habrdemo.entrypoint.habr;
+package com.chvs.habrdemo.entrypoint.habr.article;
 
-import com.chvs.habrdemo.core.habr.dto.CreateArticleRequest;
-import com.chvs.habrdemo.core.habr.response.article.ArticleResponse;
-import com.chvs.habrdemo.core.habr.response.article.ArticleResponseMapper;
-import com.chvs.habrdemo.core.habr.serivce.ArticleService;
+import com.chvs.habrdemo.core.habr.article.ArticleRequest;
+import com.chvs.habrdemo.core.habr.article.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +12,7 @@ public class ArticleController {
 
     private final ArticleService articleService;
     private final ArticleResponseMapper articleResponseMapper;
+    private final ArticleRequestMapper articleRequestMapper;
 
     @GetMapping("{id}")
     public ArticleResponse findBy(@PathVariable("id") Long id) {
@@ -21,8 +20,8 @@ public class ArticleController {
     }
 
     @PostMapping
-    public ArticleResponse create(@RequestBody CreateArticleRequest articleRequest) {
-        var article = articleService.create(articleRequest);
+    public ArticleResponse create(@RequestBody CreateArticleRequest createArticleRequest) {
+        var article = articleService.create(articleRequestMapper.createRequest(createArticleRequest));
 
         return articleResponseMapper.findById(article.getId());
     }

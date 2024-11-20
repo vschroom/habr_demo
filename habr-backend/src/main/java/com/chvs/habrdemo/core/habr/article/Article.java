@@ -1,4 +1,4 @@
-package com.chvs.habrdemo.core.habr.entity;
+package com.chvs.habrdemo.core.habr.article;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

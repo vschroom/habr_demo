@@ -1,4 +1,4 @@
-package com.chvs.habrdemo.core.habr.response.article;
+package com.chvs.habrdemo.entrypoint.habr.article;
 
 import lombok.Data;
 

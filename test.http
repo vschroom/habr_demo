@@ -1,4 +1,4 @@
-GET localhost:8080/articles/2
+GET localhost:8080/articles/5
 
 
 ###
@@ -7,6 +7,6 @@ POST localhost:8080/articles
 Content-Type: application/json
 
 {
-  "header": "Новая статья",
-  "body": "текст статьи"
+  "header": "Hello habr!",
+  "body": "Some text"
 }

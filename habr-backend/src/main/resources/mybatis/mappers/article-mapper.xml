@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
         'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
-<mapper namespace="com.chvs.habrdemo.core.habr.response.article.ArticleResponseMapper">
+<mapper namespace="com.chvs.habrdemo.entrypoint.habr.article.ArticleResponseMapper">
     <select id="findById" resultMap="ArticleMap">
         SELECT id,
                created_at,

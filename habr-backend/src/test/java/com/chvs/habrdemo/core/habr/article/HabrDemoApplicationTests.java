@@ -1,8 +1,6 @@
-package com.chvs.habrdemo;
+package com.chvs.habrdemo.core.habr.article;
 
-import com.chvs.habrdemo.core.habr.dto.CreateArticleRequest;
-import com.chvs.habrdemo.core.habr.entity.Article;
-import com.chvs.habrdemo.core.habr.repository.ArticleRepository;
+import com.chvs.habrdemo.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,7 +18,7 @@ class HabrDemoApplicationTests extends AbstractIntegrationTest {
 
     @Test
     void shouldCreateArticle() throws Exception {
-        var createArticleRequest = new CreateArticleRequest();
+        var createArticleRequest = new ArticleRequest();
         createArticleRequest.setHeader("header test");
         createArticleRequest.setBody("body test");
 
