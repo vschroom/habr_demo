@@ -5,18 +5,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "ArticleControllerV1", description = "Контроллер для действий со статьей")
 @RestController
 @RequestMapping("api/v1/articles")
-@RequiredArgsConstructor
-class ArticleController {
-
-    private final ArticleCreatingOperation articleCreatingOperation;
-    private final ArticleResponseMapper articleResponseMapper;
-    private final ArticleRequestConverter articleRequestConverter;
+record ArticleController(ArticleCreatingOperation articleCreatingOperation,
+                         ArticleResponseMapper articleResponseMapper,
+                         ArticleRequestConverter articleRequestConverter) {
 
     @Operation(description = "Получение статьи по идентификатору")
     @GetMapping("{id}")
