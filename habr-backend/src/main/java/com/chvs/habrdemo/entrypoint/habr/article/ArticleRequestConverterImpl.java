@@ -5,7 +5,7 @@ import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 @Component
-class ArticleRequestMapperImpl implements ArticleRequestMapper {
+class ArticleRequestConverterImpl implements ArticleRequestConverter {
 
     @Override
     @NonNull

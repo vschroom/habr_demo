@@ -16,7 +16,7 @@ class ArticleController {
 
     private final ArticleCreatingOperation articleCreatingOperation;
     private final ArticleResponseMapper articleResponseMapper;
-    private final ArticleRequestMapper articleRequestMapper;
+    private final ArticleRequestConverter articleRequestConverter;
 
     @Operation(description = "Получение статьи по идентификатору")
     @GetMapping("{id}")
@@ -28,7 +28,7 @@ class ArticleController {
     @PostMapping
     public ArticleResponse create(@Schema(description = "Запрос на создание статьи")
                                   @RequestBody CreateArticleRequest createArticleRequest) {
-        var article = articleCreatingOperation.create(articleRequestMapper.createRequest(createArticleRequest));
+        var article = articleCreatingOperation.create(articleRequestConverter.createRequest(createArticleRequest));
 
         return articleResponseMapper.findById(article.getId());
     }
