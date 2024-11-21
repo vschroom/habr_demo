@@ -24,3 +24,9 @@ mybatis:
 
 default-schema:
   name: habr_api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
