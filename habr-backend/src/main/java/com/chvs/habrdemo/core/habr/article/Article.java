@@ -1,20 +1,17 @@
 package com.chvs.habrdemo.core.habr.article;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Table(name = "articles")
 @Entity
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 public class Article {
 
     @Id
@@ -30,4 +27,35 @@ public class Article {
 
     @Column(name = "body")
     private String body;
+
+    protected Article() {
+    }
+
+    private Article(LocalDateTime createdAt, String header, String body) {
+        this.createdAt = createdAt;
+        this.header = header;
+        this.body = body;
+    }
+
+    public static Article create(@NonNull ArticleRequest articleRequest,
+                                 @NonNull LocalDateTime createdAt) {
+        return new Article(
+                createdAt,
+                articleRequest.header(),
+                articleRequest.body()
+        );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        var article = (Article) o;
+        return id != null && Objects.equals(id, article.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

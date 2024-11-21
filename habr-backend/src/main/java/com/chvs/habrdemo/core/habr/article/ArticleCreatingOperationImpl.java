@@ -8,24 +8,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-class ArticleServiceImpl implements ArticleService {
+class ArticleCreatingOperationImpl implements ArticleCreatingOperation {
 
     private final ArticleRepository articleRepository;
     private final LocalDateTimeComponent localDateTimeComponent;
 
+    @NonNull
     @Override
     @Transactional
     public Article create(@NonNull ArticleRequest articleRequest) {
-        var article = this.createArticle(articleRequest);
+        var article = Article.create(articleRequest, localDateTimeComponent.now());
 
         return articleRepository.save(article);
-    }
-
-    private Article createArticle(ArticleRequest articleRequest) {
-        return Article.builder()
-                .createdAt(localDateTimeComponent.now())
-                .header(articleRequest.getHeader())
-                .body(articleRequest.getBody())
-                .build();
     }
 }

@@ -3,8 +3,8 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
 
-    <changeSet id="2024-11-15-create-article-table" author="chernovvs">
-        <createTable tableName="articles">
+    <changeSet id="2024-11-15-create-article-table" author="chvs" context="prod">
+        <createTable schemaName="habr_api" tableName="articles">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

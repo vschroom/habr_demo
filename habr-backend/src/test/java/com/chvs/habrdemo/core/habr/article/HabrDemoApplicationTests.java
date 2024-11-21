@@ -18,14 +18,12 @@ class HabrDemoApplicationTests extends AbstractIntegrationTest {
 
     @Test
     void shouldCreateArticle() throws Exception {
-        var createArticleRequest = new ArticleRequest();
-        createArticleRequest.setHeader("header test");
-        createArticleRequest.setBody("body test");
+        var createArticleRequest = new ArticleRequest("header test", "body test");
 
-        mockMvc.perform(post("/articles")
-                .content(objectMapper.writeValueAsString(createArticleRequest))
-                .contentType(MediaType.APPLICATION_JSON)
-        )
+        mockMvc.perform(post("/api/v1/articles")
+                        .content(objectMapper.writeValueAsString(createArticleRequest))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.header").value("header test"))
@@ -34,14 +32,12 @@ class HabrDemoApplicationTests extends AbstractIntegrationTest {
 
     @Test
     void shouldReturnArticle() throws Exception {
-        articleRepository.save(Article.builder()
-                        .id(1L)
-                        .header("header")
-                        .body("body")
-                        .createdAt(LocalDateTime.of(2024, 10, 2, 0, 0))
-                .build());
+        articleRepository.save(
+                Article.create(
+                        new ArticleRequest("header", "body"),
+                        LocalDateTime.of(2024, 10, 2, 0, 0)));
 
-        mockMvc.perform(get("/articles/%s".formatted("1")))
+        mockMvc.perform(get("/api/v1/articles/%s".formatted("1")))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.header").value("header"))

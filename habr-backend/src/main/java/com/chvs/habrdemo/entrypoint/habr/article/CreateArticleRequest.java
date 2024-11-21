@@ -1,10 +1,10 @@
 package com.chvs.habrdemo.entrypoint.habr.article;
 
-import lombok.Data;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Data
-class CreateArticleRequest {
-
-    private String header;
-    private String body;
+@Schema(description = "Запрос на создание статьи")
+record CreateArticleRequest(@Schema(description = "Заголовок") @NotNull @NotBlank String header,
+                            @Schema(description = "Тело") @NotNull @NotBlank String body) {
 }

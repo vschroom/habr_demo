@@ -7,13 +7,20 @@ spring:
     password: qwerty123
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
     open-in-view: false
+    properties:
+      hibernate:
+        default_schema: ${default-schema.name}
   liquibase:
-    change-log: classpath:db/changelog/changelog-master.xml
+    change-log: classpath:db/changelog/master.xml
     enabled: true
-    contexts: default
+    contexts: prod
+    default-schema: ${default-schema.name}
 
 mybatis:
   config-location: classpath:mybatis/config.xml
   mapper-locations: classpath:mybatis/mappers/*.xml
+
+default-schema:
+  name: habr_api

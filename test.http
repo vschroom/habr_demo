@@ -1,12 +1,12 @@
-GET localhost:8080/articles/6
+GET localhost:8080/api/v1/articles/1
 
 
 ###
 
-POST localhost:8080/articles
+POST localhost:8080/api/v1/articles
 Content-Type: application/json
 
 {
   "header": "Hello habr!!!",
-  "body": "Some text v2"
+  "body": "Some text v1"
 }
