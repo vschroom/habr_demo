@@ -1,6 +1,6 @@
 package com.chvs.habrdemo.entrypoint.habr.article;
 
-import com.chvs.habrdemo.core.habr.article.ArticleCreatingOperation;
+import com.chvs.habrdemo.core.article.ArticleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "ArticleControllerV1", description = "Контроллер для действий со статьей")
 @RestController
 @RequestMapping("api/v1/articles")
-record ArticleController(ArticleCreatingOperation articleCreatingOperation,
+record ArticleController(ArticleService articleService,
                          ArticleResponseMapper articleResponseMapper,
                          ArticleRequestConverter articleRequestConverter) {
 
@@ -24,7 +24,7 @@ record ArticleController(ArticleCreatingOperation articleCreatingOperation,
     @PostMapping
     public ArticleResponse create(@Schema(description = "Запрос на создание статьи")
                                   @RequestBody CreateArticleRequest createArticleRequest) {
-        var article = articleCreatingOperation.create(articleRequestConverter.createRequest(createArticleRequest));
+        var article = articleService.create(articleRequestConverter.createRequest(createArticleRequest));
 
         return articleResponseMapper.findById(article.getId());
     }

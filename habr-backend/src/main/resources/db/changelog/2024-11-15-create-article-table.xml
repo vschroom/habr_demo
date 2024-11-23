@@ -11,12 +11,23 @@
             <column name="created_at" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
-            <column name="header" type="VARCHAR" defaultValue="">
+            <column name="header" type="VARCHAR">
                 <constraints nullable="false"/>
             </column>
-            <column name="body" type="VARCHAR" defaultValue="">
+            <column name="body" type="VARCHAR">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="2024-11-22-insert-article-table" author="chvs" context="local">
+        <sql>
+            INSERT INTO habr_api.articles (id, created_at, header, body)
+            VALUES (1, '2024-10-10T01:01:00.123456', 'Hello habr1!', 'Test body 1'),
+                   (2, '2024-11-12T02:02:00.123456', 'Hello habr2!', 'Test body 2'),
+                   (3, '2024-12-20T03:03:00.123456', 'Hello habr3!', 'Test body 3'),
+                   (4, '2024-12-25T04:04:00.123456', 'Hello habr4!', 'Test body 4'),
+                   (5, '2024-12-26T05:05:00.123456', 'Hello habr5!', 'Test body 5');
+        </sql>
     </changeSet>
 </databaseChangeLog>

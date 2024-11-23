@@ -1,8 +1,8 @@
 package com.chvs.habrdemo.entrypoint.habr.article;
 
-import com.chvs.habrdemo.core.habr.article.ArticleRequest;
+import com.chvs.habrdemo.core.article.ArticleCreationOperation;
 
 interface ArticleRequestConverter {
 
-    ArticleRequest createRequest(CreateArticleRequest createArticleRequest);
+    ArticleCreationOperation createRequest(CreateArticleRequest createArticleRequest);
 }

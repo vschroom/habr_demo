@@ -1,17 +1,15 @@
-package com.chvs.habrdemo.core.habr.article;
+package com.chvs.habrdemo.core.article;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Data;
+import lombok.NonNull;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
-@Table(name = "articles")
+@Table(name = "articles", schema = "habr_api")
 @Entity
 
-@Getter
-@Setter
+@Data
 public class Article {
 
     @Id
@@ -37,25 +35,12 @@ public class Article {
         this.body = body;
     }
 
-    public static Article create(@NonNull ArticleRequest articleRequest,
+    public static Article create(@NonNull ArticleCreationOperation articleCreationOperation,
                                  @NonNull LocalDateTime createdAt) {
         return new Article(
                 createdAt,
-                articleRequest.header(),
-                articleRequest.body()
+                articleCreationOperation.header(),
+                articleCreationOperation.body()
         );
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        var article = (Article) o;
-        return id != null && Objects.equals(id, article.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 }

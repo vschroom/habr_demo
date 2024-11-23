@@ -1,4 +1,4 @@
-package com.chvs.habrdemo.core.habr.article;
+package com.chvs.habrdemo.core.article;
 
 import com.chvs.habrdemo.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ class HabrDemoApplicationTests extends AbstractIntegrationTest {
 
     @Test
     void shouldCreateArticle() throws Exception {
-        var createArticleRequest = new ArticleRequest("header test", "body test");
+        var createArticleRequest = new ArticleCreationOperation("header test", "body test");
 
         mockMvc.perform(post("/api/v1/articles")
                         .content(objectMapper.writeValueAsString(createArticleRequest))
@@ -34,7 +34,7 @@ class HabrDemoApplicationTests extends AbstractIntegrationTest {
     void shouldReturnArticle() throws Exception {
         articleRepository.save(
                 Article.create(
-                        new ArticleRequest("header", "body"),
+                        new ArticleCreationOperation("header", "body"),
                         LocalDateTime.of(2024, 10, 2, 0, 0)));
 
         mockMvc.perform(get("/api/v1/articles/%s".formatted("1")))
