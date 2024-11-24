@@ -1,6 +1,6 @@
 package com.chvs.habrdemo.entrypoint.habr.article;
 
-import com.chvs.habrdemo.core.article.ArticleService;
+import com.chvs.habrdemo.core.model.article.ArticleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;

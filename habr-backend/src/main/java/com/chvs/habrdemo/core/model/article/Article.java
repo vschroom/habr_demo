@@ -1,16 +1,21 @@
-package com.chvs.habrdemo.core.article;
+package com.chvs.habrdemo.core.model.article;
 
+import com.chvs.habrdemo.core.base.ReadonlyIdentifiable;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NonNull;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
+
+import static lombok.AccessLevel.PACKAGE;
 
 @Table(name = "articles", schema = "habr_api")
 @Entity
 
 @Data
-public class Article {
+@Setter(value = PACKAGE)
+public class Article implements ReadonlyIdentifiable {
 
     @Id
     @Column(name = "id")

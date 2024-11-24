@@ -1,4 +1,4 @@
-package com.chvs.habrdemo.core.article;
+package com.chvs.habrdemo.core.model.article;
 
 import com.chvs.habrdemo.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;

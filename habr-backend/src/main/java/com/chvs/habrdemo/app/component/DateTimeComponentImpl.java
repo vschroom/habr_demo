@@ -1,4 +1,4 @@
-package com.chvs.habrdemo.app.components;
+package com.chvs.habrdemo.app.component;
 
 import lombok.NonNull;
 import org.springframework.stereotype.Component;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-class LocalDateTimeComponentImpl implements LocalDateTimeComponent {
+class DateTimeComponentImpl implements DateTimeComponent {
 
     @Override
     @NonNull

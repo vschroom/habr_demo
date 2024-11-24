@@ -1,4 +1,4 @@
-package com.chvs.habrdemo.core.article;
+package com.chvs.habrdemo.core.model.article;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

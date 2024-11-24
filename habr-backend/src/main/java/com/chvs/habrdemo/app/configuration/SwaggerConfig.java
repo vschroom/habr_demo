@@ -1,4 +1,4 @@
-package com.chvs.habrdemo.app.configurations;
+package com.chvs.habrdemo.app.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
