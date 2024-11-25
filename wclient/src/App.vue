@@ -48,6 +48,7 @@ import ArticlesView from "@/views/ArticlesView.vue";
         <a href="#" class="sidebar-button">Подписаться</a>
       </div>
     </div>
+
   </main>
 
   <!-- Футер -->
@@ -64,15 +65,7 @@ import ArticlesView from "@/views/ArticlesView.vue";
 </template>
 
 <style scoped>
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f3f4f6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Чтобы футер был внизу */
-}
+
 
 /* Шапка */
 header {
@@ -205,58 +198,6 @@ nav > a:hover {
   flex: 1;
 }
 
-.article-list {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.article {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  overflow: hidden;
-}
-
-.article img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-}
-
-.article-content {
-  padding: 15px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.article-title {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 0;
-  color: #007BFF;
-  text-decoration: none;
-}
-
-.article-title:hover {
-  text-decoration: underline;
-}
-
-.article-description {
-  margin: 10px 0;
-  color: #555;
-  font-size: 14px;
-}
-
-.article-meta {
-  margin-top: auto;
-  font-size: 12px;
-  color: #999;
-}
-
 /* Сайдбар */
 .sidebar {
   width: 300px;
@@ -308,7 +249,7 @@ footer {
   padding: 20px;
   text-align: center;
   margin-top: 40px;
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
 }

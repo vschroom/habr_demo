@@ -1,116 +1,74 @@
 <script setup lang="ts">
 
+import {ref} from 'vue'
+
+const todoId = ref(1)
+const todoData = ref(null)
+
+async function fetchData() {
+  todoData.value = null
+  const res = await fetch(
+      `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
+  todoData.value = await res.json()
+
+  console.log(todoData);
+}
+
+fetchData()
 </script>
 
 <template>
-  <div class="article-header">
-    <h1>Как я стал разработчиком</h1>
-    <div class="article-meta">
-      <span>Автор: Иван Иванов</span>
-      <span>24 ноября 2024</span>
+  <div>
+    <div class="article-header">
+      <h1>Как я стал разработчиком</h1>
+      <div class="article-meta">
+        <span>Автор: Иван Иванов</span>
+        <span>24 ноября 2024</span>
+      </div>
+    </div>
+
+    <div class="article-content">
+      <p>
+        В этой статье я расскажу о своем пути в разработку. Это было непросто, но невероятно интересно.
+        Сначала я увлекся программированием в школе, изучая Pascal. Позже я понял, что это моя страсть.
+      </p>
+      <p>
+        После окончания университета я начал работать в небольшой компании, где научился многому.
+        Теперь я работаю в крупной компании и наслаждаюсь решением сложных задач.
+      </p>
+    </div>
+
+    <div class="tags">
+      <a href="#">Разработка</a>
+      <a href="#">Карьера</a>
+      <a href="#">Истории успеха</a>
+    </div>
+
+    <div class="author-box">
+      <img src="https://via.placeholder.com/80" alt="Автор">
+      <div class="author-info">
+        <h3>Иван Иванов</h3>
+        <p>Разработчик с 5-летним опытом. Увлекается Python, JavaScript и веб-приложениями.</p>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <h3>Комментарии (2)</h3>
+      <div class="comment">
+        <div class="author">Анна Смирнова</div>
+        <div class="text">Очень вдохновляющая статья, спасибо!</div>
+      </div>
+      <div class="comment">
+        <div class="author">Петр Петров</div>
+        <div class="text">Много полезной информации, буду ждать новых публикаций.</div>
+      </div>
     </div>
   </div>
 
-  <div class="article-content">
-    <p>
-      В этой статье я расскажу о своем пути в разработку. Это было непросто, но невероятно интересно.
-      Сначала я увлекся программированием в школе, изучая Pascal. Позже я понял, что это моя страсть.
-    </p>
-    <p>
-      После окончания университета я начал работать в небольшой компании, где научился многому.
-      Теперь я работаю в крупной компании и наслаждаюсь решением сложных задач.
-    </p>
-  </div>
-
-  <div class="tags">
-    <a href="#">Разработка</a>
-    <a href="#">Карьера</a>
-    <a href="#">Истории успеха</a>
-  </div>
-
-  <div class="author-box">
-    <img src="https://via.placeholder.com/80" alt="Автор">
-    <div class="author-info">
-      <h3>Иван Иванов</h3>
-      <p>Разработчик с 5-летним опытом. Увлекается Python, JavaScript и веб-приложениями.</p>
-    </div>
-  </div>
-
-  <div class="comments-section">
-    <h3>Комментарии (2)</h3>
-    <div class="comment">
-      <div class="author">Анна Смирнова</div>
-      <div class="text">Очень вдохновляющая статья, спасибо!</div>
-    </div>
-    <div class="comment">
-      <div class="author">Петр Петров</div>
-      <div class="text">Много полезной информации, буду ждать новых публикаций.</div>
-    </div>
-  </div>
 </template>
 
 <style scoped>
-/* Общие стили */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f4f6;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-a {
-  text-decoration: none;
-  color: #007BFF;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-header {
-  background-color: #2d2d2d;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-nav a {
-  color: white;
-  margin-right: 20px;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: #00bfff;
-}
-
-main {
-  flex-grow: 1;
-  max-width: 960px;
-  margin: 20px auto;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-}
 
 .article-header {
   border-bottom: 1px solid #ddd;
@@ -216,18 +174,6 @@ main {
 .comment .text {
   font-size: 14px;
   color: #555;
-}
-
-footer {
-  background-color: #2d2d2d;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-footer a {
-  color: #00bfff;
 }
 
 </style>
