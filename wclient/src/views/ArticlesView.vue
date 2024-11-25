@@ -8,7 +8,7 @@ import {RouterLink} from "vue-router";
     <div class="article">
       <img src="https://via.placeholder.com/150" alt="Превью">
       <div class="article-content">
-        <RouterLink to="/articles">Article</RouterLink>
+        <RouterLink to="/article">Article</RouterLink>
         <a href="#" class="article-title">Как я стал разработчиком</a>
         <p class="article-description">История о том, как я начал свою карьеру в IT и что мне в этом помогло.</p>
         <div class="article-meta">Автор: Иван Иванов | 24 ноября 2024</div>

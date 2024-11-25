@@ -5,17 +5,6 @@ import ArticlesView from "@/views/ArticlesView.vue";
 </script>
 
 <template>
-  <!--  <header>-->
-  <!--    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125"/>-->
-
-  <!--    <div class="wrapper">-->
-  <!--      <nav>-->
-  <!--        <RouterLink to="/">Home</RouterLink>-->
-  <!--        <RouterLink to="/about">About</RouterLink>-->
-  <!--      </nav>-->
-  <!--      <HelloWorld msg="You did it!"/>-->
-  <!--    </div>-->
-  <!--  </header>-->
 
   <header>
     <div class="logo">Мой Хабр</div>
