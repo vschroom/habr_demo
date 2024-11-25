@@ -23,7 +23,7 @@ mybatis:
   mapper-locations: classpath:mybatis/mappers/*.xml
 
 default-schema:
-  name: habr_api
+  name: habr
 
 management:
   endpoints:

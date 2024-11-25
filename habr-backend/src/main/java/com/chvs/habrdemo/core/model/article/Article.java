@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 import static lombok.AccessLevel.PACKAGE;
 
-@Table(name = "articles", schema = "habr_api")
+@Table(name = "articles", schema = "habr")
 @Entity
 
 @Data

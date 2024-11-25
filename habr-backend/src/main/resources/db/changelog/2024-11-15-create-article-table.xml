@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
 
     <changeSet id="2024-11-15-create-article-table" author="chvs" context="prod">
-        <createTable schemaName="habr_api" tableName="articles">
+        <createTable schemaName="habr" tableName="articles">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -18,16 +18,5 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet id="2024-11-22-insert-article-table" author="chvs" context="local">
-        <sql>
-            INSERT INTO habr_api.articles (id, created_at, header, body)
-            VALUES (1, '2024-10-10T01:01:00.123456', 'Hello habr1!', 'Test body 1'),
-                   (2, '2024-11-12T02:02:00.123456', 'Hello habr2!', 'Test body 2'),
-                   (3, '2024-12-20T03:03:00.123456', 'Hello habr3!', 'Test body 3'),
-                   (4, '2024-12-25T04:04:00.123456', 'Hello habr4!', 'Test body 4'),
-                   (5, '2024-12-26T05:05:00.123456', 'Hello habr5!', 'Test body 5');
-        </sql>
     </changeSet>
 </databaseChangeLog>
