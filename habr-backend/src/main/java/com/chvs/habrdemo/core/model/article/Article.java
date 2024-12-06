@@ -21,13 +21,10 @@ public class Article implements ReadonlyIdentifiable {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @Column(name = "header")
     private String header;
-
     @Column(name = "body")
     private String body;
 
@@ -40,8 +37,8 @@ public class Article implements ReadonlyIdentifiable {
         this.body = body;
     }
 
-    public static Article create(@NonNull ArticleCreationOperation articleCreationOperation,
-                                 @NonNull LocalDateTime createdAt) {
+    static Article create(@NonNull ArticleCreationOperation articleCreationOperation,
+                          @NonNull LocalDateTime createdAt) {
         return new Article(
                 createdAt,
                 articleCreationOperation.header(),
