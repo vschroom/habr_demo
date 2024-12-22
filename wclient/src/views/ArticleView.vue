@@ -1,21 +1,26 @@
 <script setup lang="ts">
 
-import {ref} from 'vue'
+import {ref, watchEffect} from 'vue'
 
 const todoId = ref(1)
 const todoData = ref(null)
 
+watchEffect(async () => {
+  console.log("D");
+  const data = await fetchData();
+  console.log(data);
+});
+
 async function fetchData() {
-  todoData.value = null
+
+
+
   const res = await fetch(
       `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
   )
-  todoData.value = await res.json()
-
-  console.log(todoData);
+  return await res.json();
 }
 
-fetchData()
 </script>
 
 <template>
