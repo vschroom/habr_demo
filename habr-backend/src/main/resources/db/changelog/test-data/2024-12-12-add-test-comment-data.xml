@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+    <changeSet id="2024-12-17-insert-comment-table" author="chvs" context="local">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty schemaName="habr" tableName="comments"/>
+        </preConditions>
+        <sql>
+            INSERT INTO habr.comments (id, parent_id, article_id, created_at, rating, text, modified_at)
+            VALUES (1, null, 1, '2024-10-10T01:01:00.123456', 1, 'parent comment', null),
+                   (2, 1, 1, '2024-11-12T02:02:00.123456', 2, 'second comment', null),
+                   (3, 2, 1, '2024-12-20T03:03:00.123456', 2, 'third comment', null),
+                   (4, 3, 1, '2024-12-25T04:04:00.123456', 1, 'fourth comment', null),
+                   (5, 4, 1, '2024-12-26T05:05:00.123456', -1, 'fifth comment', null);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

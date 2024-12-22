@@ -11,7 +11,7 @@ class CommentServiceImpl extends BaseReadonlyServiceImpl<Comment, CommentReposit
 
     private final AppSdk appSdk;
 
-    public CommentServiceImpl(CommentRepository repository, AppSdk appSdk) {
+    CommentServiceImpl(CommentRepository repository, AppSdk appSdk) {
         super(repository);
         this.appSdk = appSdk;
     }

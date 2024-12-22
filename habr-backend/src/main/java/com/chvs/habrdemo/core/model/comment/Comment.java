@@ -24,7 +24,7 @@ public class Comment {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "parent_comment_id")
+    @JoinColumn(name = "parent_id")
     private Comment parentComment;
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "article_id")

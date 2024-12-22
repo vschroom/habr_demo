@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="com.chvs.habrdemo.entrypoint.habr.comment.CommentResponseMapper">
+    <select id="findAllParentBy" resultMap="commentResult">
+        SELECT c.id AS id,
+               c.parent_id AS parent_id,
+               c.created_at AS created_at,
+               c.rating AS rating,
+               c.text AS text,
+               c.modified_at AS modified_at
+        FROM habr.comments c
+        WHERE c.parent_id IS NULL AND c.article_id = #{articleId};
+    </select>
+
+    <select id="findAllByParent" resultMap="commentResult">
+        WITH RECURSIVE r AS (
+            SELECT c.id,
+                   c.parent_id,
+                   c.article_id,
+                   c.created_at,
+                   c.rating,
+                   c.text,
+                   c.modified_at
+            FROM habr.comments c
+            WHERE c.id = 1
+            UNION ALL
+            SELECT c.id,
+                   c.parent_id,
+                   c.article_id,
+                   c.created_at,
+                   c.rating,
+                   c.text,
+                   c.modified_at
+            FROM habr.comments c
+                     JOIN r ON c.parent_id = r.id
+        )
+        SELECT r.id AS id,
+               r.parent_id AS parent_id,
+               r.created_at AS created_at,
+               r.rating AS rating,
+               r.text AS text,
+               r.modified_at AS modified_at
+        FROM r;
+    </select>
+
+    <resultMap id="commentResult" type="CommentResponse">
+        <id column="id" property="id" javaType="java.lang.Long"/>
+        <result column="parent_id" property="parentId" javaType="java.lang.Long"/>
+        <result column="created_at" property="createdAt" javaType="java.time.LocalDateTime"/>
+        <result column="rating" property="rating"/>
+        <result column="text" property="text"/>
+        <result column="modified_at" property="modifiedAt" javaType="java.time.LocalDateTime"/>
+    </resultMap>
+</mapper>

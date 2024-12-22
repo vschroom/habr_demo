@@ -3,6 +3,9 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
     <changeSet id="2024-11-22-insert-article-table" author="chvs" context="local">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty schemaName="habr" tableName="articles"/>
+        </preConditions>
         <sql>
             INSERT INTO habr.articles (id, created_at, header, body)
             VALUES (1, '2024-10-10T01:01:00.123456', 'Hello habr1!', 'Test body 1'),
