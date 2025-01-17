@@ -15,4 +15,14 @@ Content-Type: application/json
 GET localhost:8080/api/v1/comments/article/1
 
 ###
-GET localhost:8080/api/v1/comments/1
+GET localhost:8080/api/v1/articles/comments/6
+
+###
+
+POST localhost:8080/api/v1/articles/comments/fork
+Content-Type: application/json
+
+{
+  "parentCommentId": "6",
+  "text": "тест коммент"
+}

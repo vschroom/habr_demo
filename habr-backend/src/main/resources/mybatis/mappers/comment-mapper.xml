@@ -23,7 +23,7 @@
                    c.text,
                    c.modified_at
             FROM habr.comments c
-            WHERE c.id = 1
+            WHERE c.id = #{id}
             UNION ALL
             SELECT c.id,
                    c.parent_id,

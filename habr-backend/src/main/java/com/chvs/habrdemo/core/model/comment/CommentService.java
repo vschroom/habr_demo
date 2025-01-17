@@ -5,7 +5,10 @@ import lombok.NonNull;
 public interface CommentService {
 
     @NonNull
-    Comment create(@NonNull CommentCreationOperation creationOperation);
+    Comment create(@NonNull ParentCommentCreationOperation creationOperation);
+
+    @NonNull
+    Comment forkComment(@NonNull ChildCommentCreationOperation childCreationOperation);
 
     @NonNull
     Comment update(@NonNull CommentModificationOperation modificationOperation);

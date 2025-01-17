@@ -18,9 +18,19 @@ class CommentServiceImpl extends BaseReadonlyServiceImpl<Comment, CommentReposit
 
     @Override
     @Transactional
-    public @NonNull Comment create(@NonNull CommentCreationOperation creationOperation) {
+    public @NonNull Comment create(@NonNull ParentCommentCreationOperation creationOperation) {
         var dateTimeComponent = appSdk.dateTimeComponent();
-        var comment = Comment.create(creationOperation, dateTimeComponent.now());
+        var comment = Comment.createParent(creationOperation, dateTimeComponent.now());
+
+        return repository.save(comment);
+    }
+
+    @Override
+    @Transactional
+    public @NonNull Comment forkComment(@NonNull ChildCommentCreationOperation childCreationOperation) {
+        var dateTimeComponent = appSdk.dateTimeComponent();
+        var parentComment = super.getById(childCreationOperation.parentCommentId());
+        var comment = Comment.createChild(parentComment, childCreationOperation.text(), dateTimeComponent.now());
 
         return repository.save(comment);
     }

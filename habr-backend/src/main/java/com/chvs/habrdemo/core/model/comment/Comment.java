@@ -41,19 +41,32 @@ public class Comment {
     protected Comment() {
     }
 
-    private Comment(Comment parentComment, Article article, LocalDateTime createdAt, String text) {
-        this.parentComment = parentComment;
+    private Comment(Article article, LocalDateTime createdAt, String text) {
         this.article = article;
         this.createdAt = createdAt;
         this.text = text;
     }
 
+    private Comment(Comment parentComment, LocalDateTime createdAt, String text) {
+        this.parentComment = parentComment;
+        this.article = parentComment.getArticle();
+        this.createdAt = createdAt;
+        this.text = text;
+    }
+
     @NonNull
-    static Comment create(@NonNull CommentCreationOperation creationOperation, @NonNull LocalDateTime createdAt) {
+    static Comment createParent(@NonNull ParentCommentCreationOperation creationOperation, @NonNull LocalDateTime createdAt) {
         return new Comment(
-                creationOperation.parentComment(),
                 creationOperation.article(),
                 createdAt,
                 creationOperation.text());
+    }
+
+    @NonNull
+    static Comment createChild(@NonNull Comment parentComment, @NonNull String text, @NonNull LocalDateTime createdAt) {
+        return new Comment(
+                parentComment,
+                createdAt,
+                text);
     }
 }
